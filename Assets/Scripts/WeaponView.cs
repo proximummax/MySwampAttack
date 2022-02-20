@@ -31,15 +31,12 @@ public class WeaponView : MonoBehaviour
     private void TryLockItem()
     {
         if (_weapon.IsBuyed)
-        {
             _sellButton.interactable = false;
-        }
     }
 
     public void Render(Weapon weapon)
     {
         _weapon = weapon;
-
         _label.text = weapon.Label;
         _price.text = weapon.Price.ToString();
         _icon.sprite = weapon.Icon;

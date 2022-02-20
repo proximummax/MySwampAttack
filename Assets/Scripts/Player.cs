@@ -31,18 +31,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-        {
             _currentWeapon.Shoot(_shootPoint);
-        }
     }
     public void ApplyDamage(int damage)
     {
         _currentHealth -= damage;
         HealthChanged?.Invoke(_currentHealth, _health);
         if (_currentHealth <= 0)
-        {
             Destroy(gameObject);
-        }
     }
     public void AddMoney(int money)
     {
@@ -50,10 +46,6 @@ public class Player : MonoBehaviour
         MoneyChanged?.Invoke(Money);
 
     }
-    //  private void OnEnemyDied(int reward)
-    //  {
-    //      Money += reward;
-    //  }
     public void BuyWeapon(Weapon weapon)
     {
         Money -= weapon.Price;
@@ -64,26 +56,18 @@ public class Player : MonoBehaviour
     public void NextWeapon()
     {
         if (_currentWeaponNumber == _weapons.Count - 1)
-        {
             _currentWeaponNumber = 0;
-        }
         else
-        {
             _currentWeaponNumber++;
-        }
         ChangeWeapon(_weapons[_currentWeaponNumber]);
     }
 
     public void PreviousWeapon()
     {
         if (_currentWeaponNumber == 0)
-        {
             _currentWeaponNumber = _weapons.Count - 1;
-        }
         else
-        {
             _currentWeaponNumber--;
-        }
         ChangeWeapon(_weapons[_currentWeaponNumber]);
     }
 
